@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sistem Informasi Sekolah SMK Negeri 2 Surakarta" />
+  <title>SIM Sekolah | SMK Negeri 2 Surakarta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+  <section id="auth-screen" class="auth-layout">
+    <div class="auth-art">
+      <div class="brand-mark">S2</div>
+      <p class="eyebrow">PORTAL AKADEMIK TERPADU</p>
+      <h1>SMK Negeri 2<br>Surakarta</h1>
+      <p class="auth-copy">Satu portal untuk informasi sekolah, aktivitas akademik, dan layanan siswa.</p>
+      <div class="auth-note">Belajar • Berkarya • Berprestasi</div>
+    </div>
+    <div class="auth-panel">
+      <div class="mobile-brand"><span class="brand-mark small">S2</span><b>SIM Sekolah</b></div>
+      <div class="auth-heading">
+        <p class="eyebrow">SELAMAT DATANG</p>
+        <h2 id="auth-title">Masuk ke akun</h2>
+        <p id="auth-subtitle">Gunakan email dan kata sandi yang sudah terdaftar.</p>
+      </div>
+      <form id="login-form" class="form-stack">
+        <label>Email<input id="login-email" type="email" autocomplete="email" placeholder="nama@sekolah.id" required></label>
+        <label>Kata sandi<input id="login-password" type="password" autocomplete="current-password" placeholder="Masukkan kata sandi" minlength="6" required></label>
+        <button class="btn primary full" type="submit">Masuk <span>→</span></button>
+      </form>
+      <form id="signup-form" class="form-stack hidden">
+        <label>Nama lengkap<input id="signup-name" type="text" placeholder="Nama lengkap" required></label>
+        <label>Email<input id="signup-email" type="email" autocomplete="email" placeholder="email aktif" required></label>
+        <label>Kata sandi<input id="signup-password" type="password" autocomplete="new-password" minlength="6" placeholder="Minimal 6 karakter" required></label>
+        <button class="btn primary full" type="submit">Buat akun <span>→</span></button>
+      </form>
+      <p class="auth-switch"><span id="switch-copy">Belum punya akun?</span> <button id="switch-auth" class="text-button" type="button">Daftar di sini</button></p>
+      <p class="auth-foot">Untuk proyek pembelajaran PPLG. Aktifkan Supabase terlebih dahulu sesuai README.</p>
+    </div>
+  </section>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand"><div class="brand-mark">S2</div><div><b>SMK NEGERI 2</b><span>SURAKARTA</span></div></div>
+      <div class="side-label">MENU UTAMA</div>
+      <nav id="navigation">
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Beranda</button>
+        <button class="nav-item" data-page="profil"><span>⌂</span> Profil Sekolah</button>
+        <button class="nav-item" data-page="siswa"><span>♙</span> Data Siswa</button>
+        <button class="nav-item" data-page="guru"><span>♧</span> Data Guru</button>
+        <button class="nav-item" data-page="jadwal"><span>▤</span> Jadwal Pelajaran</button>
+        <button class="nav-item" data-page="nilai"><span>✓</span> Nilai Akademik</button>
+        <button class="nav-item" data-page="presensi"><span>◷</span> Presensi</button>
+        <button class="nav-item" data-page="pengumuman"><span>♢</span> Pengumuman</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="online-dot"></div><div><b>Sistem Akademik</b><span>Terhubung dengan Supabase</span></div></div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Buka menu">☰</button>
+        <div class="breadcrumb"><span>SIM SEKOLAH</span><b>/</b><strong id="page-crumb">Beranda</strong></div>
+        <div class="top-actions"><div class="today" id="today-label"></div><div class="avatar" id="user-avatar">S</div><div class="user-meta"><b id="user-name">Pengguna</b><span id="user-role">Pengguna</span></div><button id="logout-btn" class="btn outline small-btn">Keluar</button></div>
+      </header>
+      <section id="page-content" class="page-content"></section>
+      <footer>© <span id="year"></span> SMK Negeri 2 Surakarta · Sistem Informasi Sekolah untuk pembelajaran</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
